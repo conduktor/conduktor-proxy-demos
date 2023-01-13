@@ -1,0 +1,36 @@
+organization:
+  name: "conduktor"
+
+clusters:
+  - id: default
+    name: Backing Cluster
+    color: "#0013E7"
+    ignoreUntrustedCertificate: false
+    bootstrapServers: "kafka1:9092"
+    properties:
+    schemaRegistry:
+      url: "http://schema-registry:8081"
+      ignoreUntrustedCertificate: false
+      properties:
+    labels: {}
+  - id: proxy
+    name: Proxy
+    color: "#0013E8"
+    ignoreUntrustedCertificate: false
+    bootstrapServers: "conduktor-proxy:6969"
+    schemaRegistry:
+      url: "http://schema-registry:8081"
+      ignoreUntrustedCertificate: false
+      properties:
+    properties: |
+      security.protocol=SASL_PLAINTEXT
+      sasl.mechanism=PLAIN
+      sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="test@conduktor.io" password="${PROXY_TOKEN}";
+    labels: { }
+
+auth:
+  demo-users:
+    - email: "test@conduktor.io"
+      password: "password1"
+      groups:
+        - ADMIN
