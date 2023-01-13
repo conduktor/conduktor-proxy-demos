@@ -6,3 +6,4 @@ Kafka is an extremely configurable system. This flexibility is great but can lea
 
 * [Create topic Safeguard](createTopic/Readme.md) - Limits on topic creation to ensure that any topics created in the cluster adhere to a minimum specification for Replication Factor and Partition count.
 * [Alter configs Safeguard](alterConfigs/Readme.md) - Protect Kafka from inefficient configurations.
+* [On produce Safeguard](onProduce/Readme.md) - Protect Kafka from inefficient messages.
